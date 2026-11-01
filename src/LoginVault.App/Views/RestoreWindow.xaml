@@ -1,0 +1,29 @@
+<Window x:Class="LoginVault.App.Views.RestoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:LoginVault.App.Controls"
+        Title="バックアップから復元"
+        Style="{StaticResource FluentWindow}"
+        Width="580" SizeToContent="Height" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+  <StackPanel Margin="24,20">
+    <TextBlock Style="{StaticResource FluentBodyText}" Margin="0,0,0,16" Text="暗号化されたバックアップファイル（vault.dat やそのコピー）を選び、そのバックアップを作成した時点のマスターパスワードを入力してください。現在の保管庫は退避コピーを保存したうえで、バックアップの内容で全体が置き換わります（マージはしません）。" />
+    <TextBlock Text="バックアップファイル" Style="{StaticResource FluentFieldLabel}" />
+    <Border Style="{StaticResource FluentFieldBorder}">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="PathBox" Style="{StaticResource FluentInnerTextBox}" AutomationProperties.Name="バックアップファイルのパス" />
+        <Button Grid.Column="1" Style="{StaticResource FluentIconButton}" Content="&#xE8B7;" Click="Browse_Click" ToolTip="ファイルを選択" AutomationProperties.Name="バックアップファイルを選択" />
+      </Grid>
+    </Border>
+    <controls:PasswordEntryField x:Name="PasswordField" Label="バックアップのマスターパスワード" AutomationName="バックアップのマスターパスワード" Margin="0,14,0,0" />
+    <TextBlock x:Name="ErrorText" Style="{StaticResource FluentCriticalText}" Margin="0,10,0,0" Visibility="Collapsed" />
+    <StackPanel Style="{StaticResource DialogButtons}">
+      <Button Content="次へ(_N)" Style="{StaticResource FluentAccentButton}" IsDefault="True" Click="Next_Click" MinWidth="110" />
+      <Button Content="キャンセル" IsCancel="True" />
+    </StackPanel>
+  </StackPanel>
+</Window>

@@ -1,0 +1,38 @@
+<Window x:Class="LoginVault.App.Views.EmailChangeImpactWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="メールアドレス変更の影響"
+        Style="{StaticResource FluentWindow}"
+        Width="580" SizeToContent="Height" MaxHeight="640" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+  <DockPanel Margin="24,20">
+    <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource DialogButtons}">
+      <Button Content="変更する" Click="Proceed_Click" MinWidth="110" />
+      <Button Content="キャンセル" IsCancel="True" IsDefault="True" />
+    </StackPanel>
+    <StackPanel>
+      <TextBlock Text="{Binding Summary}" Style="{StaticResource FluentBodyText}" />
+      <Border Margin="0,12,0,0" Padding="12,10" CornerRadius="{DynamicResource FluentControlCornerRadius}" Background="{DynamicResource FluentLayerBackgroundBrush}" BorderBrush="{DynamicResource FluentCardStrokeBrush}" BorderThickness="1">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Text="&#xE7BA;" FontFamily="{StaticResource FluentIconFontFamily}" FontSize="16" Foreground="{DynamicResource FluentCautionTextBrush}" VerticalAlignment="Top" Margin="0,2,10,0" />
+          <TextBlock Text="{Binding WarningText}" Style="{StaticResource FluentBodyText}" MaxWidth="470" />
+        </StackPanel>
+      </Border>
+      <TextBlock Text="参照しているアカウント（旧アドレスを保持したいものにチェック）" Style="{StaticResource FluentBodyStrongText}" Margin="0,16,0,6" />
+      <!-- 参照が多い場合はスクロールし、長い表示名は折り返す -->
+      <ScrollViewer MaxHeight="240" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <ItemsControl ItemsSource="{Binding Referrers}" IsTabStop="False" Focusable="False">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <CheckBox IsChecked="{Binding ConvertToDirect}" Margin="0,3">
+                <TextBlock TextWrapping="Wrap">
+                  <Run Text="{Binding Display, Mode=OneWay}" /><Run Text="  — 直接入力に変換して旧アドレスを保持" Foreground="{DynamicResource FluentTextSecondaryBrush}" />
+                </TextBlock>
+              </CheckBox>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+    </StackPanel>
+  </DockPanel>
+</Window>

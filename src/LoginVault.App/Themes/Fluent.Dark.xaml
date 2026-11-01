@@ -1,0 +1,80 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <!-- Fluent 2（ダーク）の配色トークン。ライト版と同じキー -->
+  <Color x:Key="FluentWindowBackgroundColor">#202020</Color>
+  <Color x:Key="FluentLayerBackgroundColor">#272727</Color>
+  <Color x:Key="FluentCardBackgroundColor">#2B2B2B</Color>
+  <Color x:Key="FluentCardStrokeColor">#1D1D1D</Color>
+  <Color x:Key="FluentDividerColor">#353535</Color>
+  <Color x:Key="FluentControlFillColor">#2D2D2D</Color>
+  <Color x:Key="FluentControlFillHoverColor">#323232</Color>
+  <Color x:Key="FluentControlFillPressedColor">#272727</Color>
+  <Color x:Key="FluentControlFillDisabledColor">#2A2A2A</Color>
+  <Color x:Key="FluentSubtleFillHoverColor">#2F2F2F</Color>
+  <Color x:Key="FluentSubtleFillPressedColor">#292929</Color>
+  <Color x:Key="FluentSubtleFillSelectedColor">#313131</Color>
+  <Color x:Key="FluentControlStrokeColor">#353535</Color>
+  <Color x:Key="FluentControlStrokeBottomColor">#303030</Color>
+  <Color x:Key="FluentControlStrongStrokeColor">#9A9A9A</Color>
+  <Color x:Key="FluentTextPrimaryColor">#FFFFFF</Color>
+  <Color x:Key="FluentTextSecondaryColor">#C9C9C9</Color>
+  <Color x:Key="FluentTextTertiaryColor">#8F8F8F</Color>
+  <Color x:Key="FluentTextDisabledColor">#6F6F6F</Color>
+  <Color x:Key="FluentTextOnAccentColor">#000000</Color>
+  <Color x:Key="FluentAccentColor">#4CC2FF</Color>
+  <Color x:Key="FluentAccentHoverColor">#47B1E8</Color>
+  <Color x:Key="FluentAccentPressedColor">#42A1D2</Color>
+  <Color x:Key="FluentAccentTextColor">#60CDFF</Color>
+  <Color x:Key="FluentFocusStrokeColor">#FFFFFF</Color>
+  <Color x:Key="FluentCriticalTextColor">#FF99A4</Color>
+  <Color x:Key="FluentSuccessTextColor">#6CCB5F</Color>
+  <Color x:Key="FluentCautionTextColor">#FCE100</Color>
+  <Color x:Key="FluentStatusBarBackgroundColor">#1C1C1C</Color>
+
+  <SolidColorBrush x:Key="FluentWindowBackgroundBrush" Color="{StaticResource FluentWindowBackgroundColor}" />
+  <SolidColorBrush x:Key="FluentLayerBackgroundBrush" Color="{StaticResource FluentLayerBackgroundColor}" />
+  <SolidColorBrush x:Key="FluentCardBackgroundBrush" Color="{StaticResource FluentCardBackgroundColor}" />
+  <SolidColorBrush x:Key="FluentCardStrokeBrush" Color="{StaticResource FluentCardStrokeColor}" />
+  <SolidColorBrush x:Key="FluentDividerBrush" Color="{StaticResource FluentDividerColor}" />
+  <SolidColorBrush x:Key="FluentControlFillBrush" Color="{StaticResource FluentControlFillColor}" />
+  <SolidColorBrush x:Key="FluentControlFillHoverBrush" Color="{StaticResource FluentControlFillHoverColor}" />
+  <SolidColorBrush x:Key="FluentControlFillPressedBrush" Color="{StaticResource FluentControlFillPressedColor}" />
+  <SolidColorBrush x:Key="FluentControlFillDisabledBrush" Color="{StaticResource FluentControlFillDisabledColor}" />
+  <SolidColorBrush x:Key="FluentSubtleFillHoverBrush" Color="{StaticResource FluentSubtleFillHoverColor}" />
+  <SolidColorBrush x:Key="FluentSubtleFillPressedBrush" Color="{StaticResource FluentSubtleFillPressedColor}" />
+  <SolidColorBrush x:Key="FluentSubtleFillSelectedBrush" Color="{StaticResource FluentSubtleFillSelectedColor}" />
+  <SolidColorBrush x:Key="FluentControlStrokeBrush" Color="{StaticResource FluentControlStrokeColor}" />
+  <SolidColorBrush x:Key="FluentControlStrokeBottomBrush" Color="{StaticResource FluentControlStrokeBottomColor}" />
+  <SolidColorBrush x:Key="FluentControlStrongStrokeBrush" Color="{StaticResource FluentControlStrongStrokeColor}" />
+  <SolidColorBrush x:Key="FluentTextPrimaryBrush" Color="{StaticResource FluentTextPrimaryColor}" />
+  <SolidColorBrush x:Key="FluentTextSecondaryBrush" Color="{StaticResource FluentTextSecondaryColor}" />
+  <SolidColorBrush x:Key="FluentTextTertiaryBrush" Color="{StaticResource FluentTextTertiaryColor}" />
+  <SolidColorBrush x:Key="FluentTextDisabledBrush" Color="{StaticResource FluentTextDisabledColor}" />
+  <SolidColorBrush x:Key="FluentTextOnAccentBrush" Color="{StaticResource FluentTextOnAccentColor}" />
+  <SolidColorBrush x:Key="FluentAccentBrush" Color="{StaticResource FluentAccentColor}" />
+  <SolidColorBrush x:Key="FluentAccentHoverBrush" Color="{StaticResource FluentAccentHoverColor}" />
+  <SolidColorBrush x:Key="FluentAccentPressedBrush" Color="{StaticResource FluentAccentPressedColor}" />
+  <SolidColorBrush x:Key="FluentAccentTextBrush" Color="{StaticResource FluentAccentTextColor}" />
+  <SolidColorBrush x:Key="FluentFocusStrokeBrush" Color="{StaticResource FluentFocusStrokeColor}" />
+  <SolidColorBrush x:Key="FluentCriticalTextBrush" Color="{StaticResource FluentCriticalTextColor}" />
+  <SolidColorBrush x:Key="FluentSuccessTextBrush" Color="{StaticResource FluentSuccessTextColor}" />
+  <SolidColorBrush x:Key="FluentCautionTextBrush" Color="{StaticResource FluentCautionTextColor}" />
+  <SolidColorBrush x:Key="FluentStatusBarBackgroundBrush" Color="{StaticResource FluentStatusBarBackgroundColor}" />
+  <!-- テーマ単位の形状・装飾。SF テーマで差し替える（ライト／ダークは従来の見た目を変えない値） -->
+  <CornerRadius x:Key="FluentControlCornerRadius">4</CornerRadius>
+  <CornerRadius x:Key="FluentOverlayCornerRadius">8</CornerRadius>
+  <CornerRadius x:Key="FluentBadgeCornerRadius">10</CornerRadius>
+  <CornerRadius x:Key="FluentFocusVisualCornerRadius">6</CornerRadius>
+  <sys:Double x:Key="FluentIndicatorRadius">1.5</sys:Double>
+  <sys:Double x:Key="FluentAccentCornerCut">0</sys:Double>
+  <FontFamily x:Key="FluentValueFontFamily">Yu Gothic UI, Meiryo UI, Segoe UI</FontFamily>
+  <FontFamily x:Key="FluentDisplayFontFamily">Yu Gothic UI, Meiryo UI, Segoe UI</FontFamily>
+  <Visibility x:Key="FluentHudVisibility">Collapsed</Visibility>
+  <SolidColorBrush x:Key="FluentScanlineBrush" Color="Transparent" />
+  <SolidColorBrush x:Key="FluentFieldFocusGlowBrush" Color="Transparent" />
+  <SolidColorBrush x:Key="FluentFieldFocusStrokeBrush" Color="{StaticResource FluentControlStrokeColor}" />
+  <SolidColorBrush x:Key="FluentCautionFillBrush" Color="#433519" />
+  <SolidColorBrush x:Key="FluentCautionStrokeBrush" Color="#7A5A17" />
+  <SolidColorBrush x:Key="FluentTagStrokeBrush" Color="Transparent" />
+</ResourceDictionary>

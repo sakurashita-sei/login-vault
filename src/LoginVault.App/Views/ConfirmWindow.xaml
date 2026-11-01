@@ -1,0 +1,29 @@
+<Window x:Class="LoginVault.App.Views.ConfirmWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource FluentWindow}"
+        Width="540" SizeToContent="Height" MaxHeight="640" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+  <DockPanel Margin="24,20">
+    <StackPanel DockPanel.Dock="Bottom" Style="{StaticResource DialogButtons}">
+      <Button x:Name="ConfirmButton" Click="Confirm_Click" MinWidth="110" />
+      <Button x:Name="CancelButton" Content="キャンセル" IsCancel="True" />
+    </StackPanel>
+    <StackPanel>
+      <TextBlock x:Name="MessageText" Style="{StaticResource FluentBodyText}" />
+      <Border x:Name="DetailsPanel" Margin="0,12,0,0" Padding="12,8" CornerRadius="{DynamicResource FluentControlCornerRadius}" Background="{DynamicResource FluentLayerBackgroundBrush}" BorderBrush="{DynamicResource FluentCardStrokeBrush}" BorderThickness="1" MaxHeight="220">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <ItemsControl x:Name="DetailsList" AutomationProperties.Name="詳細">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <TextBlock Style="{StaticResource FluentBodyText}" Margin="0,2">
+                  <Run Text="・" /><Run Text="{Binding Mode=OneWay}" />
+                </TextBlock>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </Border>
+    </StackPanel>
+  </DockPanel>
+</Window>

@@ -1,0 +1,39 @@
+# ビルド出力
+bin/
+obj/
+artifacts/
+TestResults/
+*.binlog
+
+# IDE
+.vs/
+.idea/
+*.user
+*.suo
+.vscode/
+
+# 開発・検証用の架空データ（scripts/run-dev.ps1 が使用）
+.dev-data/
+dev-data/
+
+# 保管庫・暗号化一時ファイル・バックアップ（誤って置かれた場合の保険）
+*.dat
+*.dat.*.tmp
+backups/
+ui-settings.json
+
+# テスト出力
+testdata/
+*.trx
+*.coverage
+coverage/
+
+# publish.ps1 が作る起動用ショートカット（絶対パスを含む）と Playwright の作業ディレクトリ
+*.lnk
+tmp/
+
+# 署名に使う自己署名証明書の拇印（PC・ユーザーごとに異なる。scripts/new-signing-cert.ps1 が作る。D-042）
+scripts/signing-thumbprint.txt
+
+# 設計・検証ドキュメント
+docs/

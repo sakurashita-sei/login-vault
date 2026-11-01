@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- 暗号化・保管庫ファイル・バックアップ・セッション。WPF に依存しない -->
+  <PropertyGroup>
+    <TargetFramework>$(LoginVaultCoreTargetFramework)</TargetFramework>
+    <RootNamespace>LoginVault.Infrastructure</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LoginVault.Core\LoginVault.Core.csproj" />
+  </ItemGroup>
+
+</Project>

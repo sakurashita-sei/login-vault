@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- 業務ルール・検証・検索・メール参照。WPF と Infrastructure に依存しない -->
+  <PropertyGroup>
+    <TargetFramework>$(LoginVaultCoreTargetFramework)</TargetFramework>
+    <RootNamespace>LoginVault.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>

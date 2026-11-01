@@ -1,0 +1,136 @@
+<Window x:Class="LoginVault.App.Views.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:LoginVault.App.ViewModels"
+        Title="Login Vault を起動しています"
+        Style="{StaticResource FluentWindow}"
+        Width="720" Height="420" ResizeMode="NoResize" WindowStyle="None" ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen" AutomationProperties.Name="Login Vault を起動しています">
+  <!-- 起動中の表示。配色はテーマに追従し、走査線・括弧飾り・光の帯は SF テーマのときだけ出る（参照デザイン: docs の SF UI スプラッシュスクリーン追加版） -->
+  <Border BorderBrush="{DynamicResource FluentControlStrongStrokeBrush}" BorderThickness="1" Background="{DynamicResource FluentWindowBackgroundBrush}" ClipToBounds="True">
+    <Grid>
+      <Rectangle Fill="{DynamicResource FluentScanlineBrush}" IsHitTestVisible="False" Visibility="{DynamicResource FluentHudVisibility}" />
+      <Rectangle x:Name="Sweep" Height="40" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="{DynamicResource FluentHudVisibility}">
+        <Rectangle.Fill>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#005EEAFF" Offset="0" />
+            <GradientStop Color="#145EEAFF" Offset="0.5" />
+            <GradientStop Color="#005EEAFF" Offset="1" />
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+        <Rectangle.RenderTransform>
+          <TranslateTransform x:Name="SweepTransform" Y="-40" />
+        </Rectangle.RenderTransform>
+      </Rectangle>
+      <Border Width="18" Height="18" BorderThickness="2,2,0,0" BorderBrush="{DynamicResource FluentAccentBrush}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" IsHitTestVisible="False" Visibility="{DynamicResource FluentHudVisibility}" />
+      <Border Width="18" Height="18" BorderThickness="0,0,2,2" BorderBrush="{DynamicResource FluentAccentBrush}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" IsHitTestVisible="False" Visibility="{DynamicResource FluentHudVisibility}" />
+
+      <DockPanel Margin="48,36,48,14">
+        <!-- フッター: バージョンと方針 -->
+        <Border DockPanel.Dock="Bottom" BorderBrush="{DynamicResource FluentDividerBrush}" BorderThickness="0,1,0,0" Padding="0,10,0,0" Margin="0,8,0,0">
+          <Grid>
+            <TextBlock Text="{Binding VersionText}" FontSize="10" Foreground="{DynamicResource FluentTextTertiaryBrush}" />
+            <TextBlock Text="LOCAL ONLY · NO TELEMETRY" FontSize="10" Foreground="{DynamicResource FluentTextTertiaryBrush}" HorizontalAlignment="Right" />
+          </Grid>
+        </Border>
+
+        <!-- 進捗: 状態行、32 分割のバー、4 つの手順 -->
+        <StackPanel DockPanel.Dock="Bottom">
+          <Grid>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="{Binding StatusText}" FontSize="12" Foreground="{DynamicResource FluentTextSecondaryBrush}" />
+              <TextBlock x:Name="StatusCursor" Text=" _" FontSize="12" Foreground="{DynamicResource FluentAccentTextBrush}" />
+            </StackPanel>
+            <TextBlock Text="{Binding PercentText}" FontSize="12" Foreground="{DynamicResource FluentAccentTextBrush}" HorizontalAlignment="Right" />
+          </Grid>
+          <ItemsControl ItemsSource="{Binding Segments}" Margin="0,10,0,0" IsTabStop="False" Focusable="False">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <UniformGrid Rows="1" Columns="32" />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate DataType="{x:Type vm:SplashSegmentViewModel}">
+                <Rectangle Height="6" Margin="1.5,0">
+                  <Rectangle.Style>
+                    <Style TargetType="Rectangle">
+                      <Setter Property="Fill" Value="{DynamicResource FluentControlStrokeBrush}" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsFilled}" Value="True">
+                          <Setter Property="Fill" Value="{DynamicResource FluentAccentBrush}" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </Rectangle.Style>
+                </Rectangle>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+          <ItemsControl ItemsSource="{Binding Steps}" Margin="0,10,0,0" IsTabStop="False" Focusable="False">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <UniformGrid Rows="1" Columns="4" />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate DataType="{x:Type vm:SplashStepViewModel}">
+                <StackPanel Orientation="Horizontal" Margin="0,0,8,0">
+                  <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                      <Setter Property="TextElement.Foreground" Value="{DynamicResource FluentTextTertiaryBrush}" />
+                      <Style.Triggers>
+                        <DataTrigger Binding="{Binding State}" Value="Running">
+                          <Setter Property="TextElement.Foreground" Value="{DynamicResource FluentCautionTextBrush}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding State}" Value="Done">
+                          <Setter Property="TextElement.Foreground" Value="{DynamicResource FluentAccentTextBrush}" />
+                        </DataTrigger>
+                      </Style.Triggers>
+                    </Style>
+                  </StackPanel.Style>
+                  <Border BorderThickness="1" Padding="4,0" VerticalAlignment="Center" BorderBrush="{Binding (TextElement.Foreground), RelativeSource={RelativeSource AncestorType=StackPanel}}">
+                    <TextBlock Text="{Binding Tag}" FontSize="9" />
+                  </Border>
+                  <TextBlock Text="{Binding Label}" FontSize="11" Margin="6,0,0,0" VerticalAlignment="Center" />
+                </StackPanel>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+
+        <!-- 上段: エンブレム（回る輪＋アプリアイコン）と名称 -->
+        <Grid Margin="0,0,0,16">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid Width="220" Height="220" VerticalAlignment="Center">
+            <Grid x:Name="RingOuter" RenderTransformOrigin="0.5,0.5" Opacity="0.9">
+              <Grid.RenderTransform>
+                <RotateTransform x:Name="RingOuterRotate" />
+              </Grid.RenderTransform>
+              <Ellipse Width="208" Height="208" Stroke="{DynamicResource FluentAccentBrush}" StrokeThickness="1" StrokeDashArray="2 8" Opacity="0.35" />
+              <Path Data="M110,6 A104,104 0 0 1 184,36.5" Stroke="{DynamicResource FluentAccentBrush}" StrokeThickness="2" />
+            </Grid>
+            <Ellipse x:Name="RingMid" Width="176" Height="176" Stroke="{DynamicResource FluentAccentBrush}" StrokeThickness="6" StrokeDashArray="6.67 2.33" Opacity="0.18" RenderTransformOrigin="0.5,0.5">
+              <Ellipse.RenderTransform>
+                <RotateTransform x:Name="RingMidRotate" />
+              </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse Width="144" Height="144" Stroke="{DynamicResource FluentAccentBrush}" StrokeThickness="1" Opacity="0.25" />
+            <Image Source="pack://application:,,,/LoginVault;component/Assets/icon-256.png" Width="96" Height="96" RenderOptions.BitmapScalingMode="HighQuality" />
+          </Grid>
+          <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="36,0,0,0">
+            <TextBlock Text="SECURE CREDENTIAL STORE" FontSize="11" Foreground="{DynamicResource FluentTextTertiaryBrush}" />
+            <TextBlock Text="LOGIN" FontSize="56" FontWeight="Bold" LineHeight="54" LineStackingStrategy="BlockLineHeight" Foreground="{DynamicResource FluentTextPrimaryBrush}" Margin="0,10,0,0" />
+            <TextBlock Text="VAULT" FontSize="56" FontWeight="Bold" LineHeight="54" LineStackingStrategy="BlockLineHeight" Foreground="{DynamicResource FluentTextPrimaryBrush}" />
+            <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+              <Rectangle Width="28" Height="2" Fill="{DynamicResource FluentAccentBrush}" VerticalAlignment="Center" />
+              <TextBlock Text="ログイン・ヴォールト" FontSize="14" Foreground="{DynamicResource FluentTextSecondaryBrush}" Margin="12,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+          </StackPanel>
+        </Grid>
+      </DockPanel>
+    </Grid>
+  </Border>
+</Window>

@@ -1,0 +1,38 @@
+<Project>
+  <!--
+    ソリューション全体の共通ビルド設定。
+    TFM は次の2プロパティに集約している。2026-10-29 に .NET 10 SDK（10.0.403）を導入し、
+    net8.0 / net8.0-windows から net10.0 / net10.0-windows へ再ターゲットした（docs/decisions.md D-001、D-039）。
+    SDK の選択は global.json（10.x に固定）で行う。
+  -->
+  <PropertyGroup>
+    <LoginVaultCoreTargetFramework>net10.0</LoginVaultCoreTargetFramework>
+    <LoginVaultWindowsTargetFramework>net10.0-windows</LoginVaultWindowsTargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!-- IDE0005 をビルドで検出するために必要。公開メンバーの XML コメント欠落（CS1591）は抑止する -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <PathMap>$(MSBuildThisFileDirectory)=/_/</PathMap>
+    <!-- 復元時に推移的依存まで既知脆弱性を監査する。NU1901〜NU1904 は TreatWarningsAsErrors によりエラー、監査データが取れない NU1905 だけは警告に留める -->
+    <NuGetAudit>true</NuGetAudit>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditLevel>low</NuGetAuditLevel>
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1905</WarningsNotAsErrors>
+    <NeutralLanguage>ja-JP</NeutralLanguage>
+    <Product>Login Vault</Product>
+    <Company>saisassekii</Company>
+    <Authors>saisassekii</Authors>
+    <Copyright>© 2026 saisassekii (GitHub: @saisassekii). All rights reserved.</Copyright>
+    <Version>1.0.0</Version>
+    <SatelliteResourceLanguages>ja;en</SatelliteResourceLanguages>
+  </PropertyGroup>
+</Project>

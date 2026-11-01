@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- WPF 画面・ViewModel・Windows 連携。実行ファイル名は LoginVault.exe -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>$(LoginVaultWindowsTargetFramework)</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>LoginVault</AssemblyName>
+    <RootNamespace>LoginVault.App</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- 実行ファイル・タスクバー・タイトルバーのアイコン（docs/アイコン/LoginVault.ico と同一。D-030） -->
+    <ApplicationIcon>Assets\LoginVault.ico</ApplicationIcon>
+    <!-- WPF では未評価のトリミング・単一ファイル化は行わない -->
+    <PublishTrimmed>false</PublishTrimmed>
+    <PublishSingleFile>false</PublishSingleFile>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <!-- 起動フック（環境変数 DOTNET_STARTUP_HOOKS）によるコード注入を受け付けない。BinaryFormatter は使わないので WPF の既定（有効）を無効に戻す -->
+    <StartupHookSupport>false</StartupHookSupport>
+    <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 画面内で使うアイコン画像（埋め込みリソース）。pack://application:,,,/LoginVault;component/Assets/icon-256.png で参照する -->
+    <Resource Include="Assets\icon-256.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LoginVault.Core\LoginVault.Core.csproj" />
+    <ProjectReference Include="..\LoginVault.Infrastructure\LoginVault.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
