@@ -32,7 +32,7 @@
     <Company>sakurashita-sei</Company>
     <Authors>sakurashita-sei</Authors>
     <Copyright>© 2026 sakurashita-sei (GitHub: @sakurashita-sei). All rights reserved.</Copyright>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <SatelliteResourceLanguages>ja;en</SatelliteResourceLanguages>
   </PropertyGroup>
 </Project>
