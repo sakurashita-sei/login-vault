@@ -13,7 +13,7 @@
 #>
 [CmdletBinding()]
 param(
-    [string]$Subject = 'CN=saisassekii',
+    [string]$Subject = 'CN=sakurashita-sei',
     [int]$Years = 5,
     [switch]$Trust
 )

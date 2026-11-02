@@ -335,14 +335,14 @@ public class AccountEditorViewModelTests
     }
 
     [Fact]
-    public void ServiceOptions_EndWithANewServiceEntry_AndAVaultWithoutServicesStartsThere()
+    public void ServiceOptions_StartWithANewServiceEntry_AndAVaultWithoutServicesStartsThere()
     {
         var sc = Scenario();
         var editor = new AccountEditorViewModel(sc.Doc, null, sc.Amazon.Id);
 
         Assert.Equal(sc.Doc.Services.Count + 1, editor.ServiceOptions.Count);
-        Assert.Equal(AccountEditorViewModel.NewServiceChoice, editor.ServiceOptions[^1]);
-        Assert.Equal("＋ 新しいサービスを追加…", editor.ServiceOptions[^1].Name);
+        Assert.Equal(AccountEditorViewModel.NewServiceChoice, editor.ServiceOptions[0]);
+        Assert.Equal("＋ 新しいサービスを追加…", editor.ServiceOptions[0].Name);
         Assert.False(editor.IsNewService);
 
         var empty = new AccountEditorViewModel(new VaultDocument(), null, null);
@@ -358,7 +358,7 @@ public class AccountEditorViewModelTests
         var changed = new List<string?>();
         editor.PropertyChanged += (_, e) => changed.Add(e.PropertyName);
 
-        editor.SelectedService = editor.ServiceOptions[^1];
+        editor.SelectedService = editor.ServiceOptions[0];
 
         Assert.True(editor.IsNewService);
         Assert.Contains(nameof(AccountEditorViewModel.IsNewService), changed);

@@ -926,7 +926,7 @@ public class VaultViewModelTests : IDisposable
         var generationsBefore = GenerationCount();
         _dialogs.EditorHandler = editor =>
         {
-            editor.SelectedService = editor.ServiceOptions[^1];
+            editor.SelectedService = editor.ServiceOptions[0];
             editor.NewServiceName = " ゲームB ";
             editor.LoginIdText = "player9";
             editor.SetNewPassword("gameb-pw");
@@ -952,7 +952,7 @@ public class VaultViewModelTests : IDisposable
         var servicesBefore = vault.Snapshot.Document.Services.Count;
         _dialogs.EditorHandler = editor =>
         {
-            editor.SelectedService = editor.ServiceOptions[^1];
+            editor.SelectedService = editor.ServiceOptions[0];
             editor.NewServiceName = " amazon ";
             editor.LoginIdText = "second-amazon";
             editor.SetNewPassword("amazon-pw-2");
@@ -995,7 +995,7 @@ public class VaultViewModelTests : IDisposable
         var generationsBefore = GenerationCount();
         _dialogs.EditorHandler = editor =>
         {
-            editor.SelectedService = editor.ServiceOptions[^1];
+            editor.SelectedService = editor.ServiceOptions[0];
             editor.NewServiceName = "ゲームC";
             return true;
         };

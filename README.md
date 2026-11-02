@@ -32,7 +32,7 @@
 
 ## 署名（自己署名証明書）
 
-発行物の `LoginVault.exe` と `LoginVault*.dll` には、`scripts\new-signing-cert.ps1` で作る自己署名のコード署名証明書（`CN=saisassekii`）で Authenticode 署名を付けます（`docs/decisions.md` D-040）。目的は「ファイルが差し替え・改ざんされていないことを確かめられる」ことで、SmartScreen の評価や他の PC での信頼は得られません（それには商用の OV／EV 証明書が必要です）。
+発行物の `LoginVault.exe` と `LoginVault*.dll` には、`scripts\new-signing-cert.ps1` で作る自己署名のコード署名証明書（`CN=sakurashita-sei`）で Authenticode 署名を付けます（`docs/decisions.md` D-040）。目的は「ファイルが差し替え・改ざんされていないことを確かめられる」ことで、SmartScreen の評価や他の PC での信頼は得られません（それには商用の OV／EV 証明書が必要です）。
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy RemoteSigned -File scripts\new-signing-cert.ps1          # 証明書を作り、拇印を scripts\signing-thumbprint.txt に書く（1 回だけ）
@@ -156,7 +156,7 @@ docs/                           設計書、判断記録、進捗、検証記録
 
 ## ライセンス
 
-MIT License（`LICENSE`、Copyright (c) 2026 saisassekii (GitHub: @saisassekii)）。アプリアイコン（`docs/アイコン/`、`src/LoginVault.App/Assets/`）は Claude Design で生成したものです。利用しているライブラリは CommunityToolkit.Mvvm（MIT）、.NET ランタイム（MIT）、テスト用の xunit（Apache-2.0）と coverlet（MIT）です。
+MIT License（`LICENSE`、Copyright (c) 2026 sakurashita-sei (GitHub: @sakurashita-sei)）。アプリアイコン（`docs/アイコン/`、`src/LoginVault.App/Assets/`）は Claude Design で生成したものです。利用しているライブラリは CommunityToolkit.Mvvm（MIT）、.NET ランタイム（MIT）、テスト用の xunit（Apache-2.0）と coverlet（MIT）です。
 このソフトウェアは無保証です。自己レビューと自動テストは第三者によるセキュリティ監査の代わりにはなりません（`docs/security-review.md`）。
 
 ## 対象外（初期版）

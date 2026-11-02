@@ -159,11 +159,11 @@ public class AccountEditorLayoutTests
                 var combo = Named<ComboBox>(window, "サービス名");
                 var box = Named<TextBox>(window, "新しいサービス名");
                 var details = Assert.IsAssignableFrom<FrameworkElement>(window.FindName("DetailsPanel"));
-                Assert.Contains(AccountEditorViewModel.NewServiceChoice, combo.Items.Cast<object>());
+                Assert.Equal(AccountEditorViewModel.NewServiceChoice, combo.Items[0]);
                 Assert.False(IsInside(box, details));
                 Assert.Equal(Visibility.Collapsed, box.Visibility);
 
-                editor.SelectedService = editor.ServiceOptions[^1];
+                editor.SelectedService = editor.ServiceOptions[0];
                 await UiThread.SettleAsync();
                 Assert.Equal(Visibility.Visible, box.Visibility);
             }

@@ -136,7 +136,7 @@ public sealed partial class AccountEditorViewModel : ObservableObject
             .Select(c => new EmailCandidateItem(c.Id, VaultQueries.EmailCandidateLabel(document, c)))
             .ToList();
 
-        ServiceOptions = Services.Append(NewServiceChoice).ToList();
+        ServiceOptions = Services.Prepend(NewServiceChoice).ToList();
         var serviceId = existing?.ServiceId ?? preselectedServiceId;
         // サービスがまだ 1 件もない保管庫では、最初から新しいサービスの入力で開く
         SelectedService = Services.FirstOrDefault(s => s.Id == serviceId) ?? (existing is null && Services.Count == 0 ? NewServiceChoice : null);
@@ -186,7 +186,7 @@ public sealed partial class AccountEditorViewModel : ObservableObject
 
     public IReadOnlyList<ServiceChoice> Services { get; }
 
-    /// <summary>The service list of the dialog: every service plus <see cref="NewServiceChoice"/> at the end.</summary>
+    /// <summary>The service list of the dialog: <see cref="NewServiceChoice"/> at the top followed by every service.</summary>
     public IReadOnlyList<ServiceChoice> ServiceOptions { get; }
 
     /// <summary>True while the "new service" entry is chosen.</summary>
