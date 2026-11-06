@@ -198,19 +198,21 @@
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <ControlTemplate x:Key="FluentSubmenuItem" TargetType="MenuItem">
-    <Border x:Name="Root" Background="Transparent" CornerRadius="{DynamicResource FluentControlCornerRadius}" Padding="10,7" Margin="0,1">
-      <Grid>
-        <Grid.ColumnDefinitions>
-          <!-- チェック可能な項目だけ左にチェック印の列を確保する -->
-          <ColumnDefinition x:Name="CheckColumn" Width="0" />
-          <ColumnDefinition Width="*" />
-          <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <TextBlock x:Name="CheckGlyph" Text="&#xE73E;" FontFamily="{DynamicResource FluentIconFontFamily}" FontSize="12" Foreground="{DynamicResource FluentAccentTextBrush}" VerticalAlignment="Center" Visibility="Hidden" />
-        <ContentPresenter Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" VerticalAlignment="Center" />
-        <TextBlock Grid.Column="2" Text="{TemplateBinding InputGestureText}" Foreground="{DynamicResource FluentTextSecondaryBrush}" Margin="24,0,0,0" VerticalAlignment="Center" />
-      </Grid>
-    </Border>
+    <Grid Background="Transparent" Margin="-4,0">
+      <Border x:Name="Root" Background="Transparent" CornerRadius="{DynamicResource FluentControlCornerRadius}" Padding="10,7" Margin="4,1">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <!-- チェック可能な項目だけ左にチェック印の列を確保する -->
+            <ColumnDefinition x:Name="CheckColumn" Width="0" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <TextBlock x:Name="CheckGlyph" Text="&#xE73E;" FontFamily="{DynamicResource FluentIconFontFamily}" FontSize="12" Foreground="{DynamicResource FluentAccentTextBrush}" VerticalAlignment="Center" Visibility="Hidden" />
+          <ContentPresenter Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" VerticalAlignment="Center" />
+          <TextBlock Grid.Column="2" Text="{TemplateBinding InputGestureText}" Foreground="{DynamicResource FluentTextSecondaryBrush}" Margin="24,0,0,0" VerticalAlignment="Center" />
+        </Grid>
+      </Border>
+    </Grid>
     <ControlTemplate.Triggers>
       <Trigger Property="IsCheckable" Value="True">
         <Setter TargetName="CheckColumn" Property="Width" Value="22" />
@@ -229,8 +231,8 @@
   <!-- 入れ子のサブメニューの見出し（「表示」→「テーマ」など）。右端に右向きの山形を出し、右側にポップアップを開く（D-047）。
        左のチェック印の列は、同じメニューのチェック可能な項目と文字の位置を揃えるために確保する -->
   <ControlTemplate x:Key="FluentSubmenuHeader" TargetType="MenuItem">
-    <Grid>
-      <Border x:Name="Root" Background="Transparent" CornerRadius="{DynamicResource FluentControlCornerRadius}" Padding="10,7" Margin="0,1">
+    <Grid Background="Transparent" Margin="-4,0">
+      <Border x:Name="Root" Background="Transparent" CornerRadius="{DynamicResource FluentControlCornerRadius}" Padding="10,7" Margin="4,1">
         <Grid>
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="22" />
@@ -241,7 +243,7 @@
           <TextBlock Grid.Column="2" Text="&#xE76C;" FontFamily="{DynamicResource FluentIconFontFamily}" FontSize="10" Foreground="{DynamicResource FluentTextSecondaryBrush}" Margin="24,0,0,0" VerticalAlignment="Center" />
         </Grid>
       </Border>
-      <Popup x:Name="PART_Popup" IsOpen="{TemplateBinding IsSubmenuOpen}" Placement="Right" HorizontalOffset="4" VerticalOffset="-5" AllowsTransparency="True" PopupAnimation="Fade" Focusable="False">
+      <Popup x:Name="PART_Popup" IsOpen="{TemplateBinding IsSubmenuOpen}" Placement="Right" HorizontalOffset="-4" VerticalOffset="-5" AllowsTransparency="True" PopupAnimation="Fade" Focusable="False">
         <Border Background="{DynamicResource FluentCardBackgroundBrush}" BorderBrush="{DynamicResource FluentCardStrokeBrush}" BorderThickness="1" CornerRadius="{DynamicResource FluentOverlayCornerRadius}" Padding="4" MinWidth="200">
           <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" />
         </Border>
